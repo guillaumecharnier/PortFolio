@@ -5,25 +5,37 @@
 
 {% block body %}
     <div class="content-container">
+        <aside class="aside-left">
+            <div class="aside-content">
+                <h2>Pixel Art Maker</h2>
+                <p>
+                    Le Pixel Art Maker est une application qui vous permet de créer des œuvres d'art pixelisées en choisissant des couleurs et en remplissant des cellules dans une grille.
+                </p>
+            </div>
+        </aside>
         <div class="grid-container">
             <div class="grid" id="grid"></div>
-            <label for="colorPicker">Sélecteur de couleur :</label>
-            <input type="color" id="colorPicker">
-            <div class="color-container">
-                <div class="color-buttons">
-                    <button class="color-button" data-color="#ff0000" style="background-color: #ff0000;" title="Rouge">Rouge</button>
-                    <button class="color-button" data-color="#00ff00" style="background-color: #00ff00;" title="Vert">Vert</button>
-                    <button class="color-button" data-color="#0000ff" style="background-color: #0000ff;" title="Bleu">Bleu</button>
-                    <button class="color-button" data-color="#ffff00" style="background-color: #ffff00;" title="Jaune">Jaune</button> 
-                    <button class="color-button" data-color="#000000" style="background-color: #000000; color: #ffffff;" title="Noir">Noir</button>
+            <div class="card-body">
+                <div id="btn-container" class="text-center">
+                    <a id="btn-explorer" class="btn btn-primary btn-lg" href="{{ path('app_show_PortFolio') }}" role="button">Retour au menu</a>
                 </div>
             </div>
-            <button id="resetButton" class="btn btn-secondary">Recommencer</button>
         </div>
-        <aside class="info-container">
-            <h2>Qu'est-ce que le Pixel Art ?</h2>
-            <p>Le Pixel Art est une forme d'art numérique où les images sont créées en manipulant des pixels individuels pour former des compositions visuelles.</p>
-            <p>Dans cette application, vous pouvez utiliser le sélecteur de couleurs et les boutons pour créer votre propre Pixel Art en remplissant la grille avec les couleurs de votre choix.</p>
+        <aside class="aside-right">
+            <div class="aside-content">
+                <label for="colorPicker">Sélecteur de couleur :</label>
+                <input type="color" id="colorPicker">
+                <div class="color-container">
+                    <div class="color-buttons">
+                        <button class="color-button" data-color="#ff0000" style="background-color: #ff0000;" title="Rouge">Rouge</button>
+                        <button class="color-button" data-color="#00ff00" style="background-color: #00ff00;" title="Vert">Vert</button>
+                        <button class="color-button" data-color="#0000ff" style="background-color: #0000ff;" title="Bleu">Bleu</button>
+                        <button class="color-button" data-color="#ffff00" style="background-color: #ffff00;" title="Jaune">Jaune</button> 
+                        <button class="color-button" data-color="#000000" style="background-color: #000000; color: #ffffff;" title="Noir">Noir</button>
+                    </div>
+                </div>
+                <button id="resetButton" class="btn btn-secondary">Recommencer</button>
+            </div>
         </aside>
     </div>
 {% endblock %}
@@ -47,13 +59,32 @@
 
         .content-container {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start; /* Alignement ajusté */
+            justify-content: center;
+            align-items: flex-start;
             margin-bottom: 50px;
             width: 100%;
             max-width: 1200px;
             padding: 0 20px;
             box-sizing: border-box;
+        }
+
+        .aside-left, .aside-right {
+            width: 20%; /* Ajuster la largeur des asides selon votre préférence */
+            padding: 20px;
+            box-sizing: border-box;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 10px;
+        }
+
+        .aside-content {
+            text-align: center;
+        }
+
+        .aside-right {
+            background-color: rgba(255, 255, 255, 0.2); /* Fond semi-transparent */
         }
 
         .grid-container {
@@ -63,7 +94,7 @@
             justify-content: center;
             padding: 20px;
             box-sizing: border-box;
-            width: 70%;
+            width: 60%; /* Ajuster la largeur de la grille principale */
         }
 
         .grid {
@@ -86,6 +117,7 @@
             margin-top: 20px;
             font-size: 1rem;
             color: #fff;
+            display: block;
         }
 
         #colorPicker {
@@ -98,22 +130,23 @@
             margin-top: 10px;
             display: flex;
             justify-content: center;
-            background-color: #fff;
             padding: 10px;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.5); /* Fond semi-transparent */
+            width: 100%;
         }
 
         .color-buttons {
             display: flex;
             justify-content: center;
-            margin-top: 10px;
+            flex-wrap: wrap; /* Permet aux boutons de couleur de passer à la ligne si nécessaire */
         }
 
         .color-button {
             width: 50px;
             height: 50px;
-            margin: 0 5px;
+            margin: 5px;
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -148,29 +181,6 @@
 
         #resetButton:active {
             transform: scale(0.9);
-        }
-
-        .info-container {
-            width: 30%;
-            padding: 20px;
-            box-sizing: border-box;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            height: fit-content;
-            align-self: flex-start; /* Alignement ajusté */
-        }
-
-        .info-container h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .info-container p {
-            line-height: 1.6;
-            color: #666;
         }
     </style>
 {% endblock %}
