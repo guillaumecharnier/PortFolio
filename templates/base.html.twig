@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Inclure animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <title>{% block title %}Mon Portfolio{% endblock %}</title>
+    {% block stylesheets %}
+    <style>
+        body {
+            background: linear-gradient(to bottom, #333333, #000000); /* Dégradé de gris/noir */
+            color: #ffffff; /* Couleur du texte */
+            font-family: Arial, sans-serif; /* Police de caractères */
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Hauteur minimale de la vue */
+            text-align: center;
+        }
+
+        .content {
+            background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent noir pour le contenu */
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3rem; /* Taille de la police pour les titres */
+            margin-bottom: 20px; /* Espacement en bas des titres */
+        }
+
+        p {
+            font-size: 1.2rem; /* Taille de la police pour les paragraphes */
+            line-height: 1.6; /* Hauteur de ligne pour une lecture confortable */
+        }
+
+        footer {
+            background-color: #black; /* Fond sombre pour le footer */
+            color: #ffffff; /* Texte blanc pour le footer */
+            padding: 20px 0; /* Espacement intérieur du footer */
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+
+{% block body %}
+    <div class="content">
+        {# Contenu spécifique à chaque page sera défini dans les fichiers Twig spécifiques à chaque page #}
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+
+<footer>
+    <div class="container">
+        <p class="mb-0">© {{ "now"|date("Y") }} Guillaume Charnier - Tous droits réservés</p>
+        <p class="mb-0"><a href="#">Mentions légales</a></p>
+    </div>
+</footer>
+
+{% block javascripts %}
+    {# Inclure les scripts JavaScript si nécessaire #}
+    <script src="{{ asset('build/app.js') }}"></script>
+{% endblock %}
+
+</body>
+</html>

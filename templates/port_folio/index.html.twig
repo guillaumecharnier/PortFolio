@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <a href="" class="box cv">
+            <h2>Mon CV</h2>
+            <p>Cliquez ici pour voir mon CV...</p>
+        </a>
+        <a href="" class="box projects">
+            <h2>Mes Projets</h2>
+            <p>Découvrez mes projets...</p>
+        </a>
+        <a href="{{ path('app_show_presentation') }}" class="box presentation">
+            <h2>Présentation</h2>
+            <p>En savoir plus sur moi...</p>
+        </a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const boxes = document.querySelectorAll('.box');
+
+            boxes.forEach(box => {
+                box.addEventListener('mouseover', function() {
+                    this.classList.add('box-hover');
+                });
+
+                box.addEventListener('mouseout', function() {
+                    this.classList.remove('box-hover');
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #222222;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 800px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .box {
+            position: relative;
+            width: calc(33.33% - 20px);
+            padding: 20px;
+            background-color: #3498db;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease-out, transform 0.3s ease-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            filter: blur(10px);
+            transition: opacity 0.3s ease-out;
+            z-index: -1;
+            opacity: 0;
+            border-radius: 10px;
+        }
+
+        .box:hover::after {
+            opacity: 1;
+        }
+
+        .box-hover {
+            animation: shake 1s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translate(-3px, -3px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translate(3px, 3px);
+            }
+        }
+    </style>
+{% endblock %}

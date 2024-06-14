@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur Mon Portfolio{% endblock %}
+
+{% block body %}
+    <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100">
+        <div class="row text-center">
+            <div class="col">
+                <h1 id="welcome-heading"></h1>
+                <p id="skills-paragraph"></p>
+                <div id="btn-container" class="">
+                    <a id="btn-explorer" class="btn btn-primary btn-lg" href="{{ path('app_show_PortFolio') }}" role="button">0%</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const welcomeHeading = document.getElementById('welcome-heading');
+        const skillsParagraph = document.getElementById('skills-paragraph');
+        const btnExplorer = document.getElementById('btn-explorer');
+        const btnContainer = document.getElementById('btn-container');
+
+        // Textes à écrire automatiquement
+        const welcomeText = "Hello World ! Bienvenue sur Mon Portfolio";
+        const skillsText = "Découvrez mes compétences en développement web et mobile avec PHP / Symfony, JS et bien plus encore !!";
+
+        let index1 = 0;
+        let index2 = 0;
+        let totalTextLength = welcomeText.length + skillsText.length; // Longueur totale des textes
+
+        function typeWriter1() {
+            if (index1 < welcomeText.length) {
+                welcomeHeading.innerHTML += welcomeText.charAt(index1);
+                index1++;
+            }
+            updateButtonProgress();
+            setTimeout(typeWriter1, Math.floor(Math.random() * 150) + 50); // Vitesse de frappe aléatoire
+        }
+
+        function typeWriter2() {
+            if (index2 < skillsText.length) {
+                skillsParagraph.innerHTML += skillsText.charAt(index2);
+                index2++;
+            }
+            updateButtonProgress();
+            setTimeout(typeWriter2, Math.floor(Math.random() * 150) + 50); // Vitesse de frappe aléatoire
+        }
+
+        function updateButtonProgress() {
+            let progress = Math.floor((index1 + index2) / totalTextLength * 100);
+            btnExplorer.innerHTML = progress + "%";
+            btnExplorer.style.width = progress + "%"; // Ajuste la largeur du bouton en fonction du pourcentage
+
+            if (index1 + index2 >= totalTextLength) {
+                // Si tout le texte est écrit, afficher le bouton complet
+                btnExplorer.innerHTML = "Explorer";
+                btnExplorer.classList.remove('invisible');
+                btnContainer.classList.add('animate__animated', 'animate__fadeInUp');
+            }
+        }
+
+        // Démarrer l'écriture automatique
+        typeWriter1();
+        setTimeout(typeWriter2, welcomeText.length * 200); // Délai avant de commencer le texte des compétences
+    </script>
+{% endblock %}
