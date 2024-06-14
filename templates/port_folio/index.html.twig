@@ -4,15 +4,15 @@
 
 {% block body %}
     <div class="container">
-        <a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="box cv">
+        <a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="box cv" id="cv-link">
             <h2>Mon CV</h2>
             <p>Cliquez ici pour voir mon CV...</p>
         </a>
-        <a href="{{ path('app_show_pixelArt') }}" class="box projects">
+        <a href="{{ path('app_show_pixelArt') }}" class="box projects" id="projects-link">
             <h2>Mes Projets</h2>
             <p>Découvrez mon projet du moment</p>
         </a>
-        <a href="{{ path('app_show_presentation') }}" class="box presentation">
+        <a href="{{ path('app_show_presentation') }}" class="box presentation" id="presentation-link">
             <h2>Présentation</h2>
             <p>En savoir plus sur moi...</p>
         </a>
@@ -50,12 +50,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
+            min-height: 100vh;
         }
 
-        .container{
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -63,12 +61,10 @@
             gap: 20px;
             max-width: 800px;
             margin: auto;
-            margin-top: 50px;
             padding: 20px;
         }
 
         .box {
-            position: relative;
             width: calc(33.33% - 20px);
             padding: 20px;
             background-color: #3498db;
@@ -120,6 +116,42 @@
             20%, 40%, 60%, 80% {
                 transform: translate(3px, 3px);
             }
+        }
+
+        /* Style personnalisé pour les liens */
+        .box {
+            background-color: #blue; /* Vert */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+         /* Styles spécifiques pour chaque lien avec image de fond différente */
+
+        /* Lien Mon CV */
+        #cv-link {
+            background-image: url('/PortFolio/ressources/person-playing-3d-video-games-device.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Lien Mes Projets */
+        #projects-link {
+            background-image: url('/PortFolio/ressources/person-playing-3d-video-games-device.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Lien Présentation */
+        #presentation-link {
+            background-image: url('/PortFolio/ressources/person-playing-3d-video-games-device.jpg');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 {% endblock %}
