@@ -1,0 +1,243 @@
+{# templates/pixel_art/maker.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Pixel Art Maker{% endblock %}
+
+{% block body %}
+    <div class="content-container">
+        <div class="grid-container">
+            <div class="grid" id="grid"></div>
+            <label for="colorPicker">Sélecteur de couleur :</label>
+            <input type="color" id="colorPicker">
+            <div class="color-container">
+                <div class="color-buttons">
+                    <button class="color-button" data-color="#ff0000" style="background-color: #ff0000;" title="Rouge">Rouge</button>
+                    <button class="color-button" data-color="#00ff00" style="background-color: #00ff00;" title="Vert">Vert</button>
+                    <button class="color-button" data-color="#0000ff" style="background-color: #0000ff;" title="Bleu">Bleu</button>
+                    <button class="color-button" data-color="#ffff00" style="background-color: #ffff00;" title="Jaune">Jaune</button> 
+                    <button class="color-button" data-color="#000000" style="background-color: #000000; color: #ffffff;" title="Noir">Noir</button>
+                </div>
+            </div>
+            <button id="resetButton" class="btn btn-secondary">Recommencer</button>
+        </div>
+        <aside class="info-container">
+            <h2>Qu'est-ce que le Pixel Art ?</h2>
+            <p>Le Pixel Art est une forme d'art numérique où les images sont créées en manipulant des pixels individuels pour former des compositions visuelles.</p>
+            <p>Dans cette application, vous pouvez utiliser le sélecteur de couleurs et les boutons pour créer votre propre Pixel Art en remplissant la grille avec les couleurs de votre choix.</p>
+        </aside>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: black;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Alignement ajusté */
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            width: 70%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(25, 20px);
+            grid-template-rows: repeat(25, 20px);
+            gap: 1px;
+            border: 1px solid #000;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cell {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        label {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        #colorPicker {
+            margin-top: 10px;
+            width: 150px;
+            height: 30px;
+        }
+
+        .color-container {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .color-button {
+            width: 50px;
+            height: 50px;
+            margin: 0 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .color-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-button:active {
+            transform: scale(0.9);
+        }
+
+        #resetButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #dc3545;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #resetButton:hover {
+            background-color: #c82333;
+            transform: scale(1.1);
+        }
+
+        #resetButton:active {
+            transform: scale(0.9);
+        }
+
+        .info-container {
+            width: 30%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            height: fit-content;
+            align-self: flex-start; /* Alignement ajusté */
+        }
+
+        .info-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .info-container p {
+            line-height: 1.6;
+            color: #666;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.getElementById('grid');
+            const colorPicker = document.getElementById('colorPicker');
+            const resetButton = document.getElementById('resetButton');
+            const colorButtons = document.querySelectorAll('.color-button');
+            let isMouseDown = false;
+            let selectedColor = colorPicker.value;
+
+            function fillCell(event) {
+                if (event.target.classList.contains('cell')) {
+                    event.target.style.backgroundColor = selectedColor;
+                }
+            }
+
+            function resetGrid() {
+                const cells = grid.querySelectorAll('.cell');
+                cells.forEach(cell => cell.style.backgroundColor = '#fff');
+            }
+
+            colorPicker.addEventListener('input', function() {
+                selectedColor = colorPicker.value;
+            });
+
+            colorButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    selectedColor = button.getAttribute('data-color');
+                });
+            });
+
+            grid.addEventListener('click', fillCell);
+
+            grid.addEventListener('mousedown', function() {
+                isMouseDown = true;
+                grid.addEventListener('mousemove', fillCell);
+            });
+
+            document.addEventListener('mouseup', function() {
+                isMouseDown = false;
+                grid.removeEventListener('mousemove', fillCell);
+            });
+
+            resetButton.addEventListener('click', function() {
+                if (confirm('Êtes-vous sûr de vouloir réinitialiser la grille ?')) {
+                    resetGrid();
+                }
+            });
+
+            createGrid(25, 25);
+        });
+
+        function createGrid(rows, cols) {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = ''; // Clear existing grid
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    grid.appendChild(cell);
+                }
+            }
+        }
+    </script>
+{% endblock %}

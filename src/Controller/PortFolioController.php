@@ -23,4 +23,12 @@ class PortFolioController extends AbstractController
             'controller_name' => 'PortFolioController',
         ]);
     }
+
+    #[Route('/show/pixelArt', name: 'app_show_pixelArt')]
+    public function showProject(): Response
+    {
+        return $this->render('port_folio/pixelArt.html.twig', [
+            'controller_name' => 'PortFolioController',
+        ]);
+    }
 }
