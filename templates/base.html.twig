@@ -61,6 +61,7 @@
 </head>
 <body>
 
+
 {% block body %}
     <div class="content">
         {# Contenu spécifique à chaque page sera défini dans les fichiers Twig spécifiques à chaque page #}
@@ -70,6 +71,10 @@
 
 <footer>
     <div class="container">
+        <div class="social-icons">
+            <a href="https://github.com/guillaumecharnier"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/guillaume-charnier-742b50309"><i class="bi bi-linkedin"></i></a>
+        </div>
         <p class="mb-0">© {{ "now"|date("Y") }} Guillaume Charnier - Tous droits réservés</p>
         <p class="mb-0"><a href="#">Mentions légales</a></p>
     </div>
