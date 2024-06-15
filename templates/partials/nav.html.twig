@@ -1,8 +1,8 @@
 <nav class="navbar">
     <div class="containerNav">
         <ul class="nav-links">
-            <li><a href="{{ path('app_show_PortFolio') }}" {% if app.request.attributes.get('_route') == 'app_show_PortFolio' %}class="active"{% endif %}>Acceuil</a></li>
-            <li><a href="{{ path('app_show_presentation') }}" {% if app.request.attributes.get('_route') == 'app_show_presentation' %}class="active"{% endif %}>Présentation</a></li>
+            <li><a href="{{ path('app_show_PortFolio') }}" {% if app.request.attributes.get('_route') == 'app_show_PortFolio' %}class="active"{% endif %}>Accueil</a></li>
+            <li><a href="{{ path('app_show_presentation') }}" {% if app.request.attributes.get('_route') == 'app_show_presentation' %}class="active"{% endif %}>About Me</a></li>
             <li><a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor">Mon CV</a></li>
             <li><a href="{{ path('app_show_pixelArt') }}" {% if app.request.attributes.get('_route') == 'app_show_pixelArt' %}class="active"{% endif %}>Mes Projets</a></li>
         </ul>
