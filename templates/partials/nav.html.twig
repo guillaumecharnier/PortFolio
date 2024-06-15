@@ -1,0 +1,56 @@
+<nav class="navbar">
+    <div class="containerNav">
+        <ul class="nav-links">
+            <li><a href="{{ path('app_show_PortFolio') }}" {% if app.request.attributes.get('_route') == 'app_show_PortFolio' %}class="active"{% endif %}>Acceuil</a></li>
+            <li><a href="{{ path('app_show_presentation') }}" {% if app.request.attributes.get('_route') == 'app_show_presentation' %}class="active"{% endif %}>Présentation</a></li>
+            <li><a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor">Mon CV</a></li>
+            <li><a href="{{ path('app_show_pixelArt') }}" {% if app.request.attributes.get('_route') == 'app_show_pixelArt' %}class="active"{% endif %}>Mes Projets</a></li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+    /* Styles pour la navbar */
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.30); /* Fond sombre pour le navbar */
+        color: #ffffff; /* Texte blanc pour le navbar */
+        padding: 10px 0; /* Espacement intérieur du navbar */
+        text-align: center; /* Centrage du texte */
+        width: 100%;
+        margin-bottom: 20px; /* Espacement en bas du navbar */
+        flex-direction: column-reverse;
+    }
+
+    .containerNav {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .nav-links {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-links li {
+        margin: 0 10px;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+        color: #f1f1f1; /* Changement de couleur au survol */
+        font-weight: bold; /* Optionnel: mise en gras au survol */
+    }
+
+    .nav-links li a.active {
+        font-weight: bold;
+        color: #f1f1f1;
+    }
+</style>
