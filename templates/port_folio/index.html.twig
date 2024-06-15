@@ -3,20 +3,25 @@
 {% block title %}Portfolio{% endblock %}
 
 {% block body %}
-    
     <div class="container">
-        <a href="{{ path('app_show_presentation') }}" class="box presentation" id="presentation-link">
-            <h2></h2>
-            <p></p>
-        </a>
-        <a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="box cv" id="cv-link">
-            <h2></h2>
-            <p></p>
-        </a>
-        <a href="{{ path('app_show_pixelArt') }}" class="box projects" id="projects-link">
-            <h2></h2>
-            <p></p>
-        </a>
+        <div class="box-wrapper">
+            <div class="title-box">
+                <h2>About Me</h2>
+            </div>
+            <a href="{{ path('app_show_presentation') }}" class="box presentation" id="presentation-link"></a>
+        </div>
+        <div class="box-wrapper">
+            <div class="title-box">
+                <h2>Mon CV</h2>
+            </div>
+            <a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="box cv" id="cv-link"></a>
+        </div>
+        <div class="box-wrapper">
+            <div class="title-box">
+                <h2>Mes Projets</h2>
+            </div>
+            <a href="{{ path('app_show_pixelArt') }}" class="box projects" id="projects-link"></a>
+        </div>
     </div>
 {% endblock %}
 
@@ -65,6 +70,21 @@
             max-width: 800px;
             margin: auto;
             padding: 20px;
+        }
+
+        .box-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-box {
+            width: 200px; /* Correspond à la largeur des boîtes */
+            background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 10px; /* Espace entre le titre et la boîte */
         }
 
         .box {
@@ -126,10 +146,9 @@
 
         /* Style personnalisé pour les liens */
         .box {
-            background-color: #blue; /* Vert */
+            background-color: blue; /* Bleu */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            margin-bottom: 20px;
         }
 
         .box:hover {
@@ -138,24 +157,19 @@
         }
 
         /* Style spécifique pour chaque lien avec une image de fond différente */
-
         /* Lien Mon CV */
         #cv-link {
             background-image: url('/PortFolio/ressources/CV2.png');
-            
-            height: 400px; /* Hauteur ajustée de la balise <a> */
         }
 
         /* Lien Mes Projets */
         #projects-link {
             background-image: url('/PortFolio/ressources/Projet.png');
-            height: 400px; /* Hauteur ajustée de la balise <a> */
         }
 
         /* Lien Présentation */
         #presentation-link {
             background-image: url('/PortFolio/ressources/presentation.png');
-            height: 400px; /* Hauteur ajustée de la balise <a> */  
         }
     </style>
 {% endblock %}
