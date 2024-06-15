@@ -1,4 +1,3 @@
-{# templates/pixel_art/maker.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Pixel Art Maker{% endblock %}
@@ -9,7 +8,11 @@
             <div class="aside-content">
                 <h2>Pixel Art Maker</h2>
                 <p>
-                    Le Pixel Art Maker est une application qui vous permet de créer des œuvres d'art pixelisées en choisissant des couleurs et en remplissant des cellules dans une grille.
+                    /!\WORK IN PROGRESS/!\<br><br>
+                    Vous voici sur le PIXEL ART MAKER, une application qui vous permet de créer des œuvres d'art pixelisées en choisissant des couleurs et en remplissant des cellules dans une grille dans se version "beta"!N'hesitez pas à me faire par de vos idées d'améliorations ou de bugs !
+                </p>
+                <p>
+                    N'hesitez pas à me faire par de vos idées d'améliorations ou de bugs si il y en à !
                 </p>
             </div>
         </aside>
@@ -70,7 +73,7 @@
         }
 
         .aside-left, .aside-right {
-            width: 20%; /* Ajuster la largeur des asides selon votre préférence */
+            width: 20%; /* Ajuster la largeur des asides */
             padding: 20px;
             box-sizing: border-box;
             color: #fff;
@@ -186,6 +189,20 @@
         #resetButton:active {
             transform: scale(0.9);
         }
+
+        /* Style pour le bouton "Retour au menu" */
+        #btn-explorer {
+            background-color: blue;
+            color: #ffffff; /* Texte en blanc */
+            border-color: blue; /* Bordure de la même couleur */
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        #btn-explorer:hover {
+            background-color: #6a007a; /* Assombrissement au survol */
+            border-color: #6a007a; /* Bordure assombrie */
+        }
+
     </style>
 {% endblock %}
 
@@ -253,5 +270,24 @@
                 }
             }
         }
+        // Fonction pour détecter si l'utilisateur est sur un appareil mobile
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Fonction pour vérifier le type de périphérique et la résolution
+        function checkDeviceType() {
+            if (isMobileDevice()) {
+                alert("Désolé, cette page ne peut pas être afficher sur un mobile ou un tablette. Vous allez être redirigé.");
+
+                // Redirection vers la page /shows
+                window.location.href = "/show";
+            }
+        }
+
+        // Appeler la fonction au chargement de la page
+        window.onload = function() {
+            checkDeviceType();
+        };
     </script>
 {% endblock %}
