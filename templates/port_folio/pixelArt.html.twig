@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pixel Art Maker /!\WORK IN PROGRESS/!\{% endblock %}
+{% block title %}Mes Projets {% endblock %}
 
 {% block body %}
     <div class="content-container">
@@ -8,11 +8,11 @@
             <div class="aside-content">
                 <h2>Pixel Art Maker </h2>
                 <p>
-                    /!\WORK IN PROGRESS/!\<br><br>
-                    Vous voici sur le PIXEL ART MAKER, une application qui vous permet de créer des œuvres d'art pixelisées en choisissant des couleurs et en remplissant des cellules dans une grille !
+                    /!\ WORK IN PROGRESS /!\<br><br>
+                    Vous voici sur le<br>PIXEL ART MAKER<br>Une application qui vous permet de créer des œuvres d'art pixelisées en choisissant des couleurs et en remplissant des cellules dans une grille !
                 </p>
                 <p>
-                    N'hésitez pas à me faire part de vos idées d'améliorations !
+                N'hésitez pas à me faire part de vos idées d'améliorations !
                 </p>
             </div>
         </aside>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <aside class="aside-right">
-            <div class="aside-content">
+            <div class="aside-contentAs">
                 <label for="colorPicker">Sélecteur de couleur :</label>
                 <input type="color" id="colorPicker">
                 <div class="color-container">
@@ -59,18 +59,25 @@
         }
 
         .content-container {
+            flex: 1;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            margin-bottom: 50px;
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 20px;
-            box-sizing: border-box;
+            align-items: center;
+            padding: 10px;
+            text-align: center;
+            margin-left: 250px;
+            margin-right: 250px;
+
+            
         }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        
 
         .aside-left, .aside-right {
-            width: 20%; /* Ajuster la largeur des asides */
+            width: 23%; /* Ajuster la largeur des asides */
             padding: 20px;
             box-sizing: border-box;
             color: #fff;
@@ -82,6 +89,7 @@
 
         .aside-content {
             text-align: center;
+            
             
         }
 
@@ -200,6 +208,29 @@
             border-color: #6a007a; /* Bordure assombrie */
         }
 
+        /* Media query pour rendre responsive */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column; /* Passer en colonne pour les écrans plus petits */
+                align-items: center; /* Centrer verticalement */
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+
+            .grid-container {
+                width: 80%; /* Redimensionner pour les écrans jusqu'à 768px */
+            }
+
+            .aside-left, .aside-right {
+                width: 90%; /* Redimensionner les asides pour s'adapter à la largeur de l'écran */
+                margin: 10px 0; /* Ajustement des marges pour les petits écrans */
+            }
+
+            .aside-right {
+                order: 1; /* Changer l'ordre pour passer en dessous de la grille */
+            }
+        }
+
     </style>
 {% endblock %}
 
@@ -273,14 +304,14 @@
         }
 
         // Fonction pour vérifier le type de périphérique et la résolution
-        function checkDeviceType() {
-            if (isMobileDevice()) {
-                alert("Désolé, cette page ne peut pas être afficher sur un mobile ou un tablette. Vous allez être redirigé.");
+        //function checkDeviceType() {
+        //    if (isMobileDevice()) {
+        //        alert("Désolé, cette page ne peut pas être afficher sur un mobile ou un tablette. Vous allez être redirigé.");
 
                 // Redirection vers la page /shows
-                window.location.href = "/show";
-            }
-        }
+        //        window.location.href = "/show";
+        //    }
+        //}
 
         // Appeler la fonction au chargement de la page
         window.onload = function() {
