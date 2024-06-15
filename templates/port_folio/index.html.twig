@@ -6,16 +6,16 @@
     
     <div class="container">
         <a href="{{ path('app_show_presentation') }}" class="box presentation" id="presentation-link">
-            <h2>Présentation</h2>
-            <p>En savoir plus sur moi...</p>
+            <h2></h2>
+            <p></p>
         </a>
         <a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="box cv" id="cv-link">
-            <h2>Mon CV</h2>
-            <p>Cliquez ici pour voir mon CV...</p>
+            <h2></h2>
+            <p></p>
         </a>
         <a href="{{ path('app_show_pixelArt') }}" class="box projects" id="projects-link">
-            <h2>Mes Projets</h2>
-            <p>Découvrez mon projet du moment</p>
+            <h2></h2>
+            <p></p>
         </a>
     </div>
 {% endblock %}
@@ -141,19 +141,20 @@
 
         /* Lien Mon CV */
         #cv-link {
-            background-image: url('/PortFolio/ressources/sl_031420_28950_10.jpg');
+            background-image: url('/PortFolio/ressources/CV2.png');
+            
             height: 400px; /* Hauteur ajustée de la balise <a> */
         }
 
         /* Lien Mes Projets */
         #projects-link {
-            background-image: url('/PortFolio/ressources/sl_031420_28950_10.jpg');
+            background-image: url('/PortFolio/ressources/Projet.png');
             height: 400px; /* Hauteur ajustée de la balise <a> */
         }
 
         /* Lien Présentation */
         #presentation-link {
-            background-image: url('/PortFolio/ressources/sl_031420_28950_10.jpg');
+            background-image: url('/PortFolio/ressources/presentation.png');
             height: 400px; /* Hauteur ajustée de la balise <a> */  
         }
     </style>

@@ -3,6 +3,7 @@
 {% block title %}Bienvenue sur Mon Portfolio{% endblock %}
 
 {% block body %}
+    
     <div class="container-fluid d-flex align-items-center justify-content-center min-vh-100 backimg">
         <div class="row text-center">
             <div class="col">
@@ -13,6 +14,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
     <script>
@@ -72,8 +74,9 @@
 
         // Démarrer l'écriture automatique
         typeWriter1();
-        setTimeout(typeWriter2, welcomeText.length * 200); // Délai avant de commencer le texte des compétences
+        setTimeout(typeWriter2, welcomeText.length * 200); // Délai avant de commencer le texte des compétences  
     </script>
+    
 
     {% block stylesheets %}
     {{ parent() }}
