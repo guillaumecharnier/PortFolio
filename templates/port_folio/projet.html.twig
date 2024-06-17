@@ -1,29 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Mes projets{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="box-wrapper">
             <div class="title-box">
                 <h2>O'car</h2>
-                <p>Formation<p>
+                <p>Exo clé spé symfo<p>
             </div>
-            <a href="{{ path('app_show_presentation') }}" class="box presentation" id="presentation-link"></a>
+            <a href="" class="box ocar" id="ocar-link"></a>
         </div>
         <div class="box-wrapper">
             <div class="title-box">
                 <h2>O'flix</h2>
-                <p>Formation<p>
+                <p>Projet spé symfo<p>
             </div>
-            <a href="https://www.canva.com/design/DAGIJNSnwiM/CBd69Tx317AQZ-ku6GF17w/view?utm_content=DAGIJNSnwiM&utm_campaign=designshare&utm_medium=link&utm_source=editor" class="box cv" id="cv-link"></a>
+            <a href="https://oflix.guillaumecharnier-server.eddi.cloud/" class="box oflix" id="oflix-link"></a>
         </div>
         <div class="box-wrapper">
             <div class="title-box">
                 <h2>PixelArt</h2>
-                <p>A little somthing !<p>
+                <p>A little something !<p>
             </div>
-            <a href="{{ path('app_show_pixelArt') }}" class="box presentation" id="presentation-link"></a>
+            <a href="{{ path('app_show_pixelArt') }}" class="box pixelArt" id="pixelArt-link"></a>
         </div>
         
     </div>
@@ -162,18 +162,21 @@
 
         /* Style spécifique pour chaque lien avec une image de fond différente */
         /* Lien Mon CV */
-        #cv-link {
-            background-image: url('/PortFolio/ressources/CV2.png');
+        #ocar-link {
+            background-image: url('https://previews.123rf.com/images/igor170806/igor1708061707/igor170806170700087/81917144-icon-voiture-ride-image-avtobobile-ic%C3%B4ne-web-voiture-ic%C3%B4ne-format-vectoriel-enti%C3%A8rement-%C3%A9ditable.jpg');
+            background-color: rgba(0, 0, 0, 0.3);
         }
 
         /* Lien Mes Projets */
-        #projects-link {
-            background-image: url('/PortFolio/ressources/Projet.png');
+        #oflix-link {
+            background-image: url('/PortFolio/ressources/oflix.png');
+            background-color: rgba(0, 0, 0, 0.3);
         }
 
         /* Lien Présentation */
-        #presentation-link {
-            background-image: url('/PortFolio/ressources/presentation.png');
+        #pixelArt-link {
+            background-image: url('/PortFolio/ressources/pixelArt.png');
+            background-color: rgba(0, 0, 0, 0.3);
         }
     </style>
 {% endblock %}
